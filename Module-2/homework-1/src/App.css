@@ -1,0 +1,73 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.App {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgb(32, 44, 70);
+  height: 100vh;
+}
+
+h1 {
+  color: white;
+}
+
+.music {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 50px auto;
+  border: 1px solid rgb(125, 146, 190);
+  border-radius: 10px;
+  padding: 40px;
+  color: white;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.music img {
+  width: 150px;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.music h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.music p {
+  font-size: 14px;
+  color: rgb(125, 146, 190);
+  font-weight: 400;
+}
+
+.music button {
+  margin-top: 12px;
+  width: 60px;
+  padding: 4px;
+  color: rgb(125, 146, 190);
+  background-color: transparent;
+  border: 1px solid rgb(125, 146, 190);
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  cursor: pointer;
+}
