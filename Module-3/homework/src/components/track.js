@@ -1,5 +1,17 @@
 const Track = ({ track }) => {
   const { name, artists, images } = track;
+  const [getSelected, setSelected] = useState(false);
+  const [getSelect, setSelect] = useState('Select');
+
+  const handleToggle = () => {
+    if (getSelected) {
+      setSelect('Select');
+    } else {
+      setSelect('Deselect');
+    }
+    setSelected(!getSelected);
+  };
+  
 
   return (
     <>
@@ -15,6 +27,7 @@ const Track = ({ track }) => {
           <span>{artists[0].name}</span>
         )}
       </p>
+      <button onClick={handleToggle}>{getSelect}</button>
     </>
   );
 };
