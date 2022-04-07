@@ -2,8 +2,11 @@ import { useState, useRef } from "react";
 import axios from "axios";
 import Track from "./track";
 import Container from "./container";
+import { useSelector } from "react-redux";
 
-const Search = (token) => {
+const user_access_token = useSelector((state) => state.user.access_token);
+
+const Search = () => {
   const [getText, setText] = useState("");
   const [getAlbum, setAlbum] = useState([]);
   const [playlist, setPlaylist] = useState({
@@ -37,7 +40,7 @@ const Search = (token) => {
     axios
       .get(`https://api.spotify.com/v1/search?q=${getText}&type=track`, {
         headers: {
-          Authorization: "Bearer " + { token },
+          Authorization: "Bearer " + user_access_token,
         },
       })
       .then((response) => {
