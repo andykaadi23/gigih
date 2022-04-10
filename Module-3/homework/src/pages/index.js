@@ -14,11 +14,6 @@ const Index = () => {
   const dispatch = useDispatch();
   const user_access_token = useSelector((state) => state.user.access_token);
 
-  return isLogin.status ? (
-    <CreatePlaylist params={isLogin.params} />
-  ) : (
-    <Landingpage onLogin={getAccessToken} />
-  );
   const getHashParams = () => {
     let hashParams = {};
     let e,
@@ -32,6 +27,7 @@ const Index = () => {
 
   useEffect(() => {
     getHashParams();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

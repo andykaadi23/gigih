@@ -17,6 +17,7 @@ export default function CreatePlaylist() {
 
   useEffect(() => {
     getUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user_access_token !== ""]);
 
   const getUser = () => {

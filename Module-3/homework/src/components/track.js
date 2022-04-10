@@ -9,14 +9,14 @@ export default function Track(
   onDeselected
 ) {
   return (
-    <div className={Style.trackcard}>
-      <img height={height} url={imgUrl} />
-      <div className={Style.trackinfo}>
-        <h2 title="Title" value={title} />
-        <h2 title="Artist" value={artistName} />
-        <h2 tittle="Album" value={albumName} />
-        <button
-          className={Style.button}
+    <div>
+      <img height={height} url={imgUrl} alt={title} />
+      <div>
+        <h2 title="Title">{title}</h2>
+        <h2 title="Artist">{artistName}</h2>
+        <h2 tittle="Album">{albumName}</h2>
+        <input
+          type="submit"
           value={selected ? "Deselect" : "Select"}
           onClick={selected ? onDeselected : onSelected}
         />

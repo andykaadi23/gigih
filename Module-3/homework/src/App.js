@@ -7,6 +7,8 @@ import CreatePlaylist from "./pages/createPlaylist";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
+import store from "./redux/store";
+
 function App() {
   return (
     <div>

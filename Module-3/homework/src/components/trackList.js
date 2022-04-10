@@ -2,7 +2,7 @@ import React from "react";
 
 export default function TrackList(props) {
   return (
-    <div className={Style.card}>
+    <div>
       <b>List URI</b>
       <ol>
         {props.tracksSelected.map((track) => (
