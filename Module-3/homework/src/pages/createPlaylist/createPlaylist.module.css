@@ -1,0 +1,47 @@
+.wrapper_create_playlist {
+    background-color: #f7f7f7;
+    min-height: 100vh;
+    display: grid;
+    grid-template-areas: " left-section right-section";
+    grid-template-columns: 4fr 1fr;
+}
+
+.left_section {
+    grid-area: left-section;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header button {
+    align-self: center;
+    margin-right: 30px;
+}
+
+.left_section h3 {
+    padding: 30px;
+}
+
+.search_bar {
+    padding: 0px 30px;
+}
+
+.list_track {
+    padding: 15px 30px;
+}
+
+.right_section {
+    grid-area: right-section;
+    padding: 20px;
+    box-shadow: 0px 12px 10px rgb(17, 16, 16);
+}
+
+.right_section h3 {
+    padding: 20px;
+}
+
+.form_create_playlist {
+    padding: 0px 20px;
+}

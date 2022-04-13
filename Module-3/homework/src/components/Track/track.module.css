@@ -1,0 +1,67 @@
+.wrapper_track_list {
+    padding: 10px;
+    margin: 10px 0px;
+    display: grid;
+    grid-template-columns: 40px 80px 3fr 1fr 1fr;
+    grid-template-rows: 30px 30px;
+    grid-template-areas:
+      "number image title  duration action"
+      "number image artist  duration action";
+    column-gap: 10px;
+    row-gap: 10px;
+    align-items: center;
+    color: whitesmoke;
+    border: 1px solid grey;
+    border-radius: 8px;
+    box-shadow: 0px 0px 5px rgb(17, 16, 16);
+}
+
+.wrapper_track_list:hover {
+    background-color: #edba53;
+}
+
+.track_number {
+    grid-area: number;
+    justify-self: center;
+}
+
+.track_image {
+    grid-area: image;
+}  
+
+.track_title {
+    grid-area: title;
+
+}
+.track_artist {
+    grid-area: artist;
+}
+
+.track_duration {
+    grid-area: duration;
+}
+.track_action {
+    grid-area: action;
+}
+
+.track_action button {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #18c957;
+    color: white;
+    cursor: pointer;
+    font-size: large;
+    font-weight: 800;
+    margin-right: 10px;
+} 
+
+.track_action button:hover {
+    background-color: green;
+}
+
+.btn_select{
+    padding: 0.5em 1.5em;
+    background-color: rgb(26, 167, 26);
+    border: 0;
+}

@@ -9,9 +9,11 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import store from "./redux/store";
 
+import "./App.css";
+
 function App() {
   return (
-    <div>
+    <div className="app">
       <Provider store={store}>
         <Router>
           <Switch>

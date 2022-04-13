@@ -1,14 +1,18 @@
 import React from "react";
+import Track from "./Track/track";
 
-export default function TrackList(props) {
-  return (
-    <div>
-      <b>List URI</b>
-      <ol>
-        {props.tracksSelected.map((track) => (
-          <li key={track}>{track}</li>
-        ))}
-      </ol>
-    </div>
-  );
-}
+const TrackList = ({ tracks, selectedTracks, setSelectedTracks }) => {
+  return tracks.map((track, id) => {
+    return (
+      <Track
+        key={track.id}
+        track={track}
+        id={id}
+        selectedTracks={selectedTracks}
+        setSelectedTracks={setSelectedTracks}
+      />
+    );
+  });
+};
+
+export default TrackList;
