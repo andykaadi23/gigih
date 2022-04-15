@@ -1,5 +1,5 @@
 import React from "react";
-import navbarCSS from "./navbar.module.css";
+import { Flex, Box, Spacer, Button, Heading } from "@chakra-ui/react";
 
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
@@ -16,17 +16,21 @@ export default function Navbar() {
   };
 
   return (
-    <div className={navbarCSS.wrapper_navbar}>
-      <div className={navbarCSS.logo}>
-        <h2>Spotify</h2>
-      </div>
-      <div className={navbarCSS.menus}>
-        <button className={navbarCSS.menu}>Search</button>
-        <button className={navbarCSS.menu}>Create Playlist</button>
-        <button onClick={handleLogoutClick} className={navbarCSS.menu}>
+    <Flex bg="orange.300" alignItems="center" width="100vw">
+      <Box p="4">
+        <Heading as="h3" size="lg" color="black">
+          Spotify
+        </Heading>
+      </Box>
+      <Spacer />
+      <Box p="4">
+        <Button size="sm">Profile</Button>
+      </Box>
+      <Box p="4">
+        <Button onClick={handleLogoutClick} size="sm">
           Logout
-        </button>
-      </div>
-    </div>
+        </Button>
+      </Box>
+    </Flex>
   );
 }

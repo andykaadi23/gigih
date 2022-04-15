@@ -1,4 +1,3 @@
-import React from "react";
 import React, { useEffect } from "react";
 
 import { useHistory } from "react-router-dom";
@@ -13,7 +12,7 @@ import { getProfile } from "../../authorization/spotify";
 
 import { login, storeUserData } from "../../store/userSlice";
 
-import landingPageCSS from "./landingPage.module.css";
+import { Flex, Heading, Text, Button } from "@chakra-ui/react";
 
 export default function Landingpage() {
   let history = useHistory();
@@ -29,12 +28,27 @@ export default function Landingpage() {
   }, [dispatch, history]);
 
   return (
-    <div className={landingPageCSS.wrapper}>
-      <div className={landingPageCSS.banner}>
-        <h1>Music Player</h1>
-        <p>welcome</p>
-        <button onClick={loginAuthorizeSpotify}>Login</button>
-      </div>
-    </div>
+    <Flex height="100vh" alignItems="center" justifyContent="center">
+      <Flex
+        flexDirection="column"
+        background="gray.100"
+        p={20}
+        rounded={20}
+        alignItems="center"
+      >
+        <Heading mb={6}>FIND MUSIC YOU LOVE.</Heading>
+        <Text fontSize="md" mb={5}>
+          Discover millions songs on Spotify.
+        </Text>
+        <Button
+          onClick={loginAuthorizeSpotify}
+          colorScheme="pink"
+          variant="solid"
+          width="200px"
+        >
+          Login
+        </Button>
+      </Flex>
+    </Flex>
   );
 }

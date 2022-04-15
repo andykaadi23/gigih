@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import SearchBar from "../../components/searchBar/searchBar";
-import FormCreatePlaylist from "../../components/formCreatePlaylist";
+
 import TrackList from "../../components/trackList";
 import TrackStructure from "../../components/Track/trackStructure";
 import Navbar from "../../components/navbar/navbar";
@@ -11,7 +11,24 @@ import {
   createNewPlaylist,
   storeTracksToNewPlaylist,
 } from "../../authorization/spotify";
-import createPlaylistCSS from "./createPlaylist.module.css";
+import {
+  Flex,
+  Heading,
+  Box,
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  Textarea,
+  Modal,
+  ModalBody,
+  ModalHeader,
+  ModalContent,
+  ModalOverlay,
+  ModalCloseButton,
+  ModalFooter,
+  useDisclosure,
+} from "@chakra-ui/react";
 
 export default function CreatePlaylist() {
   const token = useSelector((state) => state.user.accessToken);
@@ -28,6 +45,15 @@ export default function CreatePlaylist() {
     public: false,
     collaborative: false,
   });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setPostPlaylist({ ...postPlaylist, [name]: value });
+  };
+
+  const { isOpen, onOpen, onClose } = useDisclosure;
+  const initialRef = React.useRef();
+  const finalRef = React.useRef();
 
   const buttonHandleSearch = () => {
     setIsLoading(true);
@@ -64,18 +90,30 @@ export default function CreatePlaylist() {
   };
 
   return (
-    <div>
+    <>
       <Navbar />
-      <div className={createPlaylistCSS.wrapper_create_playlist}>
-        <h3>Create Playlist</h3>
-        <div className={createPlaylistCSS.search_bar}>
-          <SearchBar
-            search={search}
-            setSearch={setSearch}
-            buttonHandleSearch={buttonHandleSearch}
-          />
-        </div>
-        <div className={createPlaylistCSS.list_track}>
+      <Flex width="100vw" height="100vh" flexDir="column">
+        <Flex p="10" flexDir="column">
+          <Heading as="h4" size="md">
+            Search
+          </Heading>
+          <Flex
+            flexDir="row"
+            alignItems="flex-start"
+            justifyContent="space-between"
+          >
+            <SearchBar
+              search={search}
+              setSearch={setSearch}
+              buttonHandleSearch={buttonHandleSearch}
+            />
+            <Button width={200} alignSelf="flex-end" onClick={onOpen}>
+              Create Playlist
+            </Button>
+          </Flex>
+        </Flex>
+
+        <Box pl="10" pr="10">
           {isLoading ? (
             <div>
               <TrackStructure />
@@ -91,18 +129,60 @@ export default function CreatePlaylist() {
               setSelectedTracks={setSelectedTracks}
             />
           )}
-        </div>
+        </Box>
+      </Flex>
 
-        <div className={createPlaylistCSS.form_create_playlist}>
-          {selectedTracks.length > 0 && (
-            <FormCreatePlaylist
-              postPlaylist={postPlaylist}
-              setPostPlaylist={setPostPlaylist}
-              handleFormSubmit={handleFormSubmit}
-            />
-          )}
-        </div>
-      </div>
-    </div>
+      <Modal
+        initialFocusRef={initialRef}
+        finalFocusRef={finalRef}
+        isOpen={isOpen}
+        onClose={onClose}
+      >
+        <ModalOverlay />
+        <form onSubmit={handleFormSubmit}>
+          <ModalContent>
+            <ModalHeader>Create Playlist</ModalHeader>
+            <ModalCloseButton />
+
+            <ModalBody pb={6}>
+              <FormControl>
+                <FormLabel>Playlist Name</FormLabel>
+                <Input
+                  ref={initialRef}
+                  id="name"
+                  name="name"
+                  type="text"
+                  minLength="10"
+                  value={postPlaylist.name}
+                  onChange={handleChange}
+                />
+              </FormControl>
+              <FormControl mt={4}>
+                <FormLabel>Description</FormLabel>
+                <Textarea
+                  id="description"
+                  name="description"
+                  minLength="20"
+                  value={postPlaylist.description}
+                  onChange={handleChange}
+                />
+              </FormControl>
+            </ModalBody>
+
+            <ModalFooter>
+              <Button
+                type="submit"
+                colorScheme="green"
+                mr={3}
+                onClick={onClose}
+              >
+                Create New Playlist
+              </Button>
+              <Button onClick={onClose}>Cancel</Button>
+            </ModalFooter>
+          </ModalContent>
+        </form>
+      </Modal>
+    </>
   );
 }

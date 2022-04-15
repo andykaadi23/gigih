@@ -5,15 +5,14 @@
     display: grid;
     grid-template-columns: 40px 80px 3fr 1fr 1fr;
     grid-template-rows: 30px 30px;
-    grid-template-areas:
-      "number image title  duration action"
-      "number image artist  duration action";
+    grid-template-areas:      "number image title  duration action"      "number image artist  duration action";
     column-gap: 10px;
     row-gap: 10px;
-    animation: skeleton 1s ease infinite alternate;
+    animation: structure 1s ease infinite alternate;
+    -webkit-animation: structure 1s ease infinite alternate;
 }
 
-@keyframes skeleton {
+@keyframes structure {
     to {
       opacity: 0.5;
     }

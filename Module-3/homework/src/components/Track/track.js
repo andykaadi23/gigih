@@ -19,16 +19,23 @@ export default function Track(track, id, selectedTracks, setSelectedTracks) {
     return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
   };
 
+  const convertTrackTittle = (title) => {
+    if (title.length > 25) {
+      return title.substring(0, 25) + "...";
+    }
+    return title;
+  };
+
   return (
     <div className={trackCSS.wrapper_track_list}>
-      <div className={trackCSS.track - number}>
+      <div className={trackCSS.track_number}>
         <p>{id + 1}</p>
       </div>
       <div className={trackCSS.track_image}>
         <img src={track.album?.images[2].url} alt={track.name} />
       </div>
       <div className={trackCSS.track_title}>
-        <p>{track?.name}</p>
+        <p>{convertTrackTittle(track.name)}</p>
       </div>
       <div className={trackCSS.track_artist}>
         <p>{track.artists[0]?.name}</p>
