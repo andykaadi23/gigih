@@ -1,4 +1,3 @@
-import React from "react";
 import TrackStructureCSS from "trackStructure.module.css";
 
 export default function TrackStructure() {
